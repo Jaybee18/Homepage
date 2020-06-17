@@ -62,6 +62,7 @@ p {
     font-size: 50px;
     margin-top: 15px;
     margin-bottom: 15px;
+    font-family: "Ubuntu",Helvetica,sans-serif;
 }
 
 .infobox{
@@ -69,9 +70,9 @@ p {
     margin-top: 25px;
     margin-left: 30px;
     cursor: default;
-    opacity: 0%;
-    transform: translateX(50px);
-    transition: opacity 0.2s, transform 0.3s;
+    transform: translateX(50px) !important;
+    visibility: hidden;
+    transition: transform 0.3s, visibility 0.3s;
 }
 
 #arrow{
@@ -83,6 +84,8 @@ p {
     margin-left: -5px;
     margin-top: 15px;
     position: absolute;
+    opacity: 0%;
+    transition: opacity 0.3s !important;
 }
 
 #meinfo{
@@ -90,13 +93,24 @@ p {
     color: black;
     border-radius: 5px;
     padding: 2px;
+    font-family: "Ubuntu",Helvetica,sans-serif;
+    opacity: 0%;
+    transition: opacity 0.3s !important;
+}
+
+#hoverarea {
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+    float: right;
 }
 
 #menulayout{
     float: right; /*dont take out*/
     display: inline-block;
     margin-right: 10px;
-    width: 420px;
+    width: 50px;
+    transition: width 0.01s;
 }
 
 #projectslist{
@@ -128,7 +142,7 @@ p {
     width: 50px;
     background-color: #006b6b;
     float: right;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
 }
 
 /*.headerlinebackground:hover{
@@ -143,6 +157,12 @@ p {
     margin: 0;
     padding-left: 0px;
     position: absolute;
+    width: fit-content;
+    height: fit-content;
+    transform: translate(-347px, 0px);
+
+    visibility: hidden;
+    transition: visibility 0.1s;
 }
 
 .headline {
@@ -168,8 +188,17 @@ p {
 }
 
 .logo:hover + .infobox{
+    /*opacity: 100% !important;*/
+    visibility: visible;
+    transform: translateX(0px) !important;
+}
+
+.logo:hover ~ .infobox #meinfo{
     opacity: 100% !important;
-    transform: translateX(0px);
+}
+
+.logo:hover ~ .infobox #arrow{
+    opacity: 100% !important;;
 }
 
 .headerlinebackground:hover #projectslist{
@@ -190,8 +219,6 @@ p {
     width: 420px;
 }*/
 
-
-
 .headerlinebackground{
     /*background-color: white;*/
     /*width: min-content;*/     
@@ -200,7 +227,7 @@ p {
     margin-top: 15px;
     margin-right: 13px;
     z-index: 1;
-
+    
     opacity: 0%;
     margin-left: -200px;
     transition: opacity 0.2s, margin-left 0.4s;
@@ -212,6 +239,10 @@ p {
     /*animation-name: menuanim_in;   /*remove animation*/
     /*animation-duration: 0.4s;      /*for the*/
     /*animation-fill-mode: forwards; /*white box*/
+}
+
+#menulayout:hover #menulist{
+    visibility: visible;
 }
 
 @keyframes menuanim_in{
